@@ -18,7 +18,6 @@ export class AcceptJSService implements OnDestroy {
   private _element: HTMLScriptElement;
 
   constructor(@Inject(TK_CONFIG) private _config: Config, @Inject(DOCUMENT) private document: any) {
-    console.log('building');
     if (typeof Accept !== 'function') {
       this.addAcceptJsScript();
     }
