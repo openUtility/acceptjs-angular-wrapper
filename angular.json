@@ -3,38 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angularAcceptJSWrapper": {
-      "root": "projects/angular-acceptjs-wrapper",
-      "sourceRoot": "projects/angular-acceptjs-wrapper/src",
+    "acceptjs-angular-wrapper": {
+      "root": "projects/acceptjs-angular-wrapper",
+      "sourceRoot": "projects/acceptjs-angular-wrapper/src",
       "projectType": "library",
       "prefix": "acpt",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/angular-acceptjs-wrapper/tsconfig.lib.json",
-            "project": "projects/angular-acceptjs-wrapper/ng-package.json"
+            "tsConfig": "projects/acceptjs-angular-wrapper/tsconfig.lib.json",
+            "project": "projects/acceptjs-angular-wrapper/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/angular-acceptjs-wrapper/ng-package.prod.json"
+              "project": "projects/acceptjs-angular-wrapper/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/angular-acceptjs-wrapper/src/test.ts",
-            "tsConfig": "projects/angular-acceptjs-wrapper/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-acceptjs-wrapper/karma.conf.js"
+            "main": "projects/acceptjs-angular-wrapper/src/test.ts",
+            "tsConfig": "projects/acceptjs-angular-wrapper/tsconfig.spec.json",
+            "karmaConfig": "projects/acceptjs-angular-wrapper/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/angular-acceptjs-wrapper/tsconfig.lib.json",
-              "projects/angular-acceptjs-wrapper/tsconfig.spec.json"
+              "projects/acceptjs-angular-wrapper/tsconfig.lib.json",
+              "projects/acceptjs-angular-wrapper/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

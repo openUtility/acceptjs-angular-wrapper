@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/angular-acceptjs-wrapper",
+  "dest": "../../dist/acceptjs-angular-wrapper",
   "lib": {
     "entryFile": "src/public_api.ts"
   }

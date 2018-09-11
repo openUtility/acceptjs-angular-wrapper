@@ -19,10 +19,10 @@
     ],
     "paths": {
       "angularAcceptJSWrapper": [
-        "dist/angular-accept-jswrapper"
+        "dist/acceptjs-angular-wrapper"
       ],
       "angularAcceptJSWrapper/*": [
-        "dist/angular-accept-jswrapper/*"
+        "dist/acceptjs-angular-wrapper/*"
       ]
     }
   }
