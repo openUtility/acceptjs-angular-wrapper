@@ -7,13 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [1.0.1] 2018-09-11
+## [1.0.1] - 2018-09-11
 
 ### Changed
 
 - removed a console.log that shouldn't have been there. :-p
 
-## [1.0.0] 2018-09-11
+## [1.0.0] - 2018-09-11
 
 ### Added
 
