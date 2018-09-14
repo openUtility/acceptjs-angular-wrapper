@@ -1,10 +1,10 @@
 {
-  "name": "@incentra/acceptjs-angular-wrapper",
+  "name": "@openutility/acceptjs-angular-wrapper",
   "version": "1.0.1",
   "license": "(ISC OR GPL-3.0)",
   "repository": {
     "type" : "git",
-    "url" : "https://github.com/incentra/acceptjs-angular-wrapper.git"
+    "url" : "https://github.com/openUtility/acceptjs-angular-wrapper.git"
   },
   "peerDependencies": {
     "@angular/common": "^6.0.0",
