@@ -1,6 +1,6 @@
 # acceptjs-angular-wrapper
 
-exposing the Authorize.net Accept.js Host your own script from an Angular6 service.
+exposing the Authorize.net Accept.js Host your own script from an Angular service.
 
 This service exposed one method ```generatePaymentNonce``` which will return a string promise of the nonce.
 any script errors, or api errors should be returned in the promise rejection.
