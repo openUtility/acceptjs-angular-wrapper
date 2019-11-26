@@ -7,6 +7,7 @@ import { AcceptJSResponse } from './models/acceptjs-response';
 import { AcceptJSPost } from './models/acceptjs-post';
 import { Config } from './models/config';
 import { TK_CONFIG } from './tk-config';
+import { Observable, isObservable, Unsubscribable } from 'rxjs';
 
 declare var Accept: any;
 
@@ -15,19 +16,36 @@ declare var Accept: any;
 })
 export class AcceptJSService implements OnDestroy {
 
-  private _element: HTMLScriptElement;
+  private element: HTMLScriptElement;
+  private activeConfig: Config = null;
+  private unsubscribeConfig: Unsubscribable;
 
-  constructor(@Inject(TK_CONFIG) private _config: Config, @Inject(DOCUMENT) private document: any) {
-    if (typeof Accept !== 'function') {
-      this.addAcceptJsScript();
+  constructor(@Inject(TK_CONFIG) private config: Config | Observable<Config>, @Inject(DOCUMENT) private document: any) {
+    // does accept already exist?
+    const acceptExists = typeof Accept === 'function';
+
+    if (isObservable(config)) {
+      if (acceptExists) {
+        throw new Error('Accept already exists');
+      }
+      this.unsubscribeConfig = config.subscribe(nConfig => {
+        this.activeConfig = nConfig;
+        this.removeAcceptJsScript();
+        this.addAcceptJsScript();
+      });
+    } else {
+      this.activeConfig = config;
+      if (!acceptExists) {
+        this.addAcceptJsScript();
+      }
     }
   }
 
   public generatePaymentNonce(cc: CreditCard): Promise<string> {
     const secureData: AcceptJSPost = {
       authData: {
-        clientKey:  this._config.clientKey,
-        apiLoginID: this._config.apiLoginID
+        clientKey:  this.activeConfig.clientKey,
+        apiLoginID: this.activeConfig.apiLoginID
       },
       cardData: cc
     };
@@ -44,9 +62,20 @@ export class AcceptJSService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this._element) {
+    if (this.unsubscribeConfig) {
+      this.unsubscribeConfig.unsubscribe();
+    }
+    this.removeAcceptJsScript();
+  }
+
+  /** removes the script tag */
+  private removeAcceptJsScript(): void {
+    if (this.element) {
       const head = this.document.getElementsByTagName('head')[0];
-      head.removeChild(this._element);
+      if (this.element.parentNode === head) {
+        head.removeChild(this.element);
+      }
+      this.element = null;
     }
   }
 
@@ -54,8 +83,8 @@ export class AcceptJSService implements OnDestroy {
   private addAcceptJsScript() {
     const headerEl = this.document.getElementsByTagName('head')[0];
     const element = this.document.createElement('script');
-    element.src = this._config.acceptjsUrl;
+    element.src = this.activeConfig.acceptjsUrl;
     element.type = 'text/javascript';
-    this._element = headerEl.appendChild(element);
+    this.element = headerEl.appendChild(element);
   }
 }

@@ -55,3 +55,29 @@ export class AppComponent {
     }
 }
 ```
+
+## Dynamic Config
+
+```ts
+// file app.module.ts
+import { NgModule } from '@angular/core';
+import { TK_CONFIG, Config, AcceptJSService } from '@openutility/acceptjs-angular-wrapper';
+import { of } from 'rxjs';
+
+const AcceptJSConfig: Config = {
+  acceptjsUrl: 'mockAcceptjs.js'
+  , apiLoginID: '123'
+  , clientKey: '456'
+};
+
+@NgModule({
+  providers: [
+    {
+      provide: TK_CONFIG,
+      useFactory: () => of(AcceptJSConfig)  // note: you wouldn't code it this way, but just to show how it could work... :)
+    },
+    AcceptJSService
+  ]
+})
+export class AppModule { }
+```
