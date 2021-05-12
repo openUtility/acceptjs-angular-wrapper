@@ -87,7 +87,7 @@ describe('AcceptService', () => {
     afterAll(() => {
       delete window['Accept'];
     });
-    it('should return a nonce when a valid responce returns', async (done) => {
+    it('should return a nonce when a valid responce returns', async () => {
       try {
         mockAccept.dispatchData.and.callFake((data, fn) => {
           expect(data.authData.clientKey).toEqual(testConfig.clientKey);
@@ -98,12 +98,12 @@ describe('AcceptService', () => {
         const rply = await acpSrv.generatePaymentNonce(testCC);
         expect(rply).toEqual('ABC');
       } catch (ex) {
+        console.error(ex);
         expect(ex).toBeFalsy();
       }
-      done();
     });
 
-    it('should reject when the request errors', async (done) => {
+    it('should reject when the request errors', async () => {
       const rtnData = {messages: {resultCode: 'Error'}};
       try {
         mockAccept.dispatchData.and.callFake((data, fn) => {
@@ -114,7 +114,6 @@ describe('AcceptService', () => {
       } catch (ex) {
         expect(ex).toBe(rtnData);
       }
-      done();
     });
   });
 });

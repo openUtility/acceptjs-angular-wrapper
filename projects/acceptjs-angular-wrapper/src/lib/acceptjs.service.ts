@@ -20,7 +20,7 @@ export class AcceptJSService implements OnDestroy {
   private activeConfig: Config = null;
   private unsubscribeConfig: Unsubscribable;
 
-  constructor(@Inject(TK_CONFIG) private config: Config | Observable<Config>, @Inject(DOCUMENT) private document: any) {
+  constructor(@Inject(TK_CONFIG) config: Config | Observable<Config>, @Inject(DOCUMENT) private document: any) {
     // does accept already exist?
     const acceptExists = typeof Accept === 'function';
 

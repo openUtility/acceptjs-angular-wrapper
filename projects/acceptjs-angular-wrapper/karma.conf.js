@@ -3,6 +3,15 @@
 
 module.exports = function (config) {
   config.set({
+    // Add for testing in docker
+    // customLaunchers: {
+    //   ChromeCustom: {
+    //     base: 'ChromeHeadless',
+    //     // We must disable the Chrome sandbox when running Chrome inside Docker (Chrome's sandbox needs
+    //     // more permissions than Docker allows by default)
+    //     flags: ['--no-sandbox']
+    //   }
+    // },
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
@@ -25,7 +34,9 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
+    // remove for testing in docker
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: false,
+    logLevel: config.LOG_DEBUG
   });
 };

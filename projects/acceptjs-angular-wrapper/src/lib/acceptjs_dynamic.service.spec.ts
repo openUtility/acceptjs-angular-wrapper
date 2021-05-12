@@ -49,8 +49,9 @@ describe('AcceptService_dynamic', () => {
   describe('dom events', () => {
     const domEvHeader: HTMLElement = document.createElement('head');
     let accpSrv: AcceptJSService;
-
+    
     beforeEach(() => {
+      dynamicConfig.next(testConfig);
       mcDocGetElementsByTagSpy.and.callFake(() => [domEvHeader]);
     });
 

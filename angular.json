@@ -10,7 +10,7 @@
       "prefix": "acpt",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/acceptjs-angular-wrapper/tsconfig.lib.json",
             "project": "projects/acceptjs-angular-wrapper/ng-package.json"
@@ -18,6 +18,7 @@
           "configurations": {
             "production": {
               "project": "projects/acceptjs-angular-wrapper/ng-package.prod.json"
+              , "tsConfig": "projects/acceptjs-angular-wrapper/tsconfig.lib.prod.json"
             }
           }
         },

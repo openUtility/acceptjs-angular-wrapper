@@ -3,7 +3,7 @@ export class MockDocument {
         return document.createElement(tag);
     }
 
-    public getElementsByTagName(tag: string): HTMLElement | HTMLScriptElement | HTMLStyleElement {
+    public getElementsByTagName(tag: string): HTMLElement[] | HTMLScriptElement[] | HTMLStyleElement[] {
         return null;
     }
 }
