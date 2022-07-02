@@ -7,13 +7,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to npm
+        with:
+          node-version: '14.x'
+          registry-url: https://registry.npmjs.org/
+          always-auth: true
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
       - run: npm run build -- --configuration production
+      - run: cp ./.npmrc ./dist/acceptjs-angular-wrapper/.npmrc
       - name: publish
         working-directory: ./dist/acceptjs-angular-wrapper
         run: npm publish
