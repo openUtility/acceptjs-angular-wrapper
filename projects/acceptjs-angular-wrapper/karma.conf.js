@@ -3,9 +3,9 @@
 
 module.exports = function (config) {
   config.set({
-    // browsers: ['Chrome'],
+    browsers: ['Chrome'],
     // Add for testing in docker
-    browsers: ['ChromeHeadlessNoSandbox'],
+    // browsers: ['ChromeHeadlessNoSandbox'],
     customLaunchers: {
       ChromeHeadlessNoSandbox: {
         base: "ChromeHeadless",
@@ -13,6 +13,10 @@ module.exports = function (config) {
           "--no-sandbox",
           "--disable-setuid-sandbox"
         ]
+      },
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu']
       }
     },
     basePath: '',

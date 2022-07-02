@@ -17,8 +17,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/acceptjs-angular-wrapper/ng-package.prod.json"
-              , "tsConfig": "projects/acceptjs-angular-wrapper/tsconfig.lib.prod.json"
+              "project": "projects/acceptjs-angular-wrapper/ng-package.prod.json",
+              "tsConfig": "projects/acceptjs-angular-wrapper/tsconfig.lib.prod.json"
             }
           }
         },
@@ -28,10 +28,31 @@
             "main": "projects/acceptjs-angular-wrapper/src/test.ts",
             "tsConfig": "projects/acceptjs-angular-wrapper/tsconfig.spec.json",
             "karmaConfig": "projects/acceptjs-angular-wrapper/karma.conf.js"
+          },
+          "configurations": {
+            "ci": {
+              "watch": false,
+              "progress": false,
+              "browsers": "ChromeHeadlessCI"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/acceptjs-angular-wrapper/**/*.ts",
+              "projects/acceptjs-angular-wrapper/**/*.html"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "angularAcceptJSWrapper-app"
+  "cli": {
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
+  }
 }
