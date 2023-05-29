@@ -1,13 +1,13 @@
 {
   "name": "@openutility/acceptjs-angular-wrapper",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "license": "(ISC OR GPL-3.0)",
   "repository": {
     "type": "git",
     "url": "https://github.com/openUtility/acceptjs-angular-wrapper.git"
   },
   "peerDependencies": {
-    "@angular/common": "10.X - 15.X",
-    "@angular/core": "10.X - 15.X"
+    "@angular/common": "15.X - 17.X",
+    "@angular/core": "15.X - 17.X"
   }
 }
